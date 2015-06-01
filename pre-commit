@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+DIR="$GIT_DIR/../"
+count=`git rev-list HEAD --count`
+commit=`git show --abbrev-commit HEAD | grep '^commit' | sed -e 's/commit //'`
+versionNumber=b"$count.$commit"
+echo $versionNumber > "${DIR}version.txt"
+git add ${DIR}version.txt
